@@ -4,67 +4,169 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Project Builder • Data With Drea</title>
+  <meta name="description" content="Generate a JSON object for your projects.json file." />
   <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
   <style>
-    .form{display:grid;gap:12px;max-width:800px;margin:24px auto}
+    .form{display:grid;gap:12px;max-width:900px;margin:24px auto}
     .form label{font-weight:600}
-    .form input,.form textarea{width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text)}
+    .form input,.form textarea, .form select{
+      width:100%;padding:12px;border-radius:var(--radius);
+      border:1px solid var(--border);background:var(--card);color:var(--text)
+    }
     .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .output{white-space:pre-wrap;background:var(--card);border:1px solid var(--border);padding:12px;border-radius:12px}
+    .output{white-space:pre-wrap;background:var(--card);border:1px solid var(--border);padding:16px;border-radius:var(--radius)}
+    .tips{max-width:900px;margin:0 auto}
+    .tips .card{margin-top:12px}
+    .muted small{opacity:.9}
   </style>
 </head>
 <body>
-<header class="site-header">
-  <a class="brand" href="./">← Back to Portfolio</a>
-</header>
-<main class="section">
-  <h1>Create a Project JSON</h1>
-  <p class="muted small">Fill this out, copy the JSON, then paste into <code>projects.json</code> in your GitHub repo.</p>
-  <form class="form" id="f">
-    <div class="row">
-      <div><label>Id (kebab-case)</label><input name="id" placeholder="matchmaker-ai" required></div>
-      <div><label>Year</label><input name="year" placeholder="2025" type="number"></div>
-    </div>
-    <div class="row">
-      <div><label>Title</label><input name="title" placeholder="MatchMaker AI" required></div>
-      <div><label>Impact (optional)</label><input name="impact" placeholder="Cuts screening time by ~35%"></div>
-    </div>
-    <div><label>Summary (one-liner)</label><input name="summary" placeholder="NLP resume matcher that ranks candidates by fit."></div>
-    <div><label>Description (HTML allowed)</label><textarea name="description_html" rows="4" placeholder="<p>What it does, and how you built it.</p>"></textarea></div>
-    <div class="row">
-      <div><label>Tags (comma separated)</label><input name="tags" placeholder="Python,NLP,Pandas"></div>
-      <div><label>Image path</label><input name="image" placeholder="img/placeholder.svg"></div>
-    </div>
-    <div class="row">
-      <div><label>Repo URL</label><input name="repo_url" placeholder="https://github.com/DataWithDrea/matchmaker-ai"></div>
-      <div><label>Live URL (HF Space)</label><input name="live_url" placeholder="https://huggingface.co/spaces/DataWithDrea/matchmaker-ai"></div>
-    </div>
-    <button class="btn" type="submit">Generate JSON</button>
-  </form>
+  <header class="site-header">
+    <a class="brand" href="./">← Data With Drea</a>
+    <nav class="nav" id="nav">
+      <a href="./#projects">Projects</a>
+      <a href="./#about">About</a>
+      <a href="./#contact">Connect</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </header>
 
-  <h2>JSON</h2>
-  <pre id="out" class="output">/* Your JSON will appear here */</pre>
-</main>
-<script>
-  document.getElementById('f').addEventListener('submit', (e)=>{
-    e.preventDefault();
-    const fd = new FormData(e.target);
-    const tags = (fd.get('tags')||'').split(',').map(s=>s.trim()).filter(Boolean);
-    const obj = {
-      id: fd.get('id')||'',
-      title: fd.get('title')||'',
-      summary: fd.get('summary')||'',
-      description_html: fd.get('description_html')||'',
-      tags, impact: fd.get('impact')||'',
-      repo_url: fd.get('repo_url')||'',
-      live_url: fd.get('live_url')||'',
-      image: fd.get('image')||'img/placeholder.svg',
-      year: Number(fd.get('year')||'')||new Date().getFullYear()
-    };
-    const txt = JSON.stringify(obj, null, 2);
-    document.getElementById('out').textContent = txt;
-    window.scrollTo({top: document.getElementById('out').offsetTop - 20, behavior:'smooth'});
-  });
-</script>
+  <main class="section">
+    <h1>Project JSON Builder</h1>
+    <p class="muted small">Fill this out, click <strong>Generate JSON</strong>, then copy the result into your <code>projects.json</code> file.</p>
+
+    <form class="form card" id="f">
+      <div class="row">
+        <div>
+          <label>Id (kebab-case)</label>
+          <input name="id" placeholder="matchmaker-ai" required>
+        </div>
+        <div>
+          <label>Year</label>
+          <input name="year" placeholder="2025" type="number">
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Title</label>
+          <input name="title" placeholder="MatchMaker AI" required>
+        </div>
+        <div>
+          <label>Impact (optional)</label>
+          <input name="impact" placeholder="Cuts screening time by ~35%">
+        </div>
+      </div>
+
+      <div>
+        <label>Summary (one-liner)</label>
+        <input name="summary" placeholder="NLP resume matcher that ranks candidates by fit.">
+      </div>
+
+      <div>
+        <label>Description (HTML allowed)</label>
+        <textarea name="description_html" rows="6" placeholder="<h3>What it does</h3><p>...</p><h3>How it works</h3><ul><li>Inputs...</li></ul>"></textarea>
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Tags (comma separated)</label>
+          <input name="tags" placeholder="Python,NLP,Pandas">
+        </div>
+        <div>
+          <label>Image path</label>
+          <input name="image" placeholder="img/placeholder.svg">
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Repo URL</label>
+          <input name="repo_url" placeholder="https://github.com/DataWithDrea/matchmaker-ai">
+        </div>
+        <div>
+          <label>Live URL (Hugging Face or other)</label>
+          <input name="live_url" placeholder="https://huggingface.co/spaces/DataWithDrea/matchmaker-ai">
+        </div>
+      </div>
+
+      <button class="btn" type="submit">Generate JSON</button>
+    </form>
+
+    <h2>JSON</h2>
+    <pre id="out" class="output">/* Your JSON will appear here */</pre>
+
+    <div class="tips">
+      <article class="card">
+        <h3>Tips</h3>
+        <ul class="bullets">
+          <li><strong>Image</strong>: upload PNG/JPG to <code>img/</code> (e.g., <code>img/matchmaker-hero.png</code>) and set that path.</li>
+          <li><strong>Live URL</strong>: paste your Hugging Face Space link to show a “Live” button; project page will embed HF automatically.</li>
+          <li><strong>Order</strong>: projects appear in the same order they are listed in <code>projects.json</code>.</li>
+          <li><strong>Keep it valid JSON</strong>: use quotes and commas carefully; one missing comma can break the page.</li>
+        </ul>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <small>© <span id="year"></span> Data With Drea</small>
+  </footer>
+
+  <!-- Cute cursor element -->
+  <div id="cursor-dot" aria-hidden="true"></div>
+
+  <script>
+    // Footer year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Mobile nav
+    (function(){
+      const nav = document.getElementById('nav');
+      const btn = document.querySelector('.nav-toggle');
+      if (btn && nav){
+        btn.addEventListener('click', ()=> {
+          const open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+      }
+    })();
+
+    // Builder logic
+    document.getElementById('f').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const tags = (fd.get('tags')||'').split(',').map(s=>s.trim()).filter(Boolean);
+      const obj = {
+        id: fd.get('id')||'',
+        title: fd.get('title')||'',
+        summary: fd.get('summary')||'',
+        description_html: fd.get('description_html')||'',
+        tags,
+        impact: fd.get('impact')||'',
+        repo_url: fd.get('repo_url')||'',
+        live_url: fd.get('live_url')||'',
+        image: fd.get('image')||'img/placeholder.svg',
+        year: Number(fd.get('year')||'')||new Date().getFullYear()
+      };
+      const txt = JSON.stringify(obj, null, 2);
+      document.getElementById('out').textContent = txt;
+      window.scrollTo({top: document.getElementById('out').offsetTop - 20, behavior:'smooth'});
+    });
+
+    // Fancy cursor
+    (function(){
+      if (!window.matchMedia || !window.matchMedia('(pointer: fine)').matches) return;
+      const dot = document.getElementById('cursor-dot'); if (!dot) return;
+      let x = innerWidth/2, y = innerHeight/2, tx = x, ty = y;
+      addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+      (function loop(){ x += (tx-x)*.18; y += (ty-y)*.18; dot.style.transform = `translate(${x}px, ${y}px)`; requestAnimationFrame(loop) })();
+      const hoverables = 'a, button, .btn';
+      document.addEventListener('mouseover', e => { if (e.target.closest(hoverables)) document.documentElement.classList.add('link-hover'); });
+      document.addEventListener('mouseout',  e => { if (e.target.closest(hoverables)) document.documentElement.classList.remove('link-hover'); });
+    })();
+  </script>
 </body>
 </html>
