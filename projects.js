@@ -1,4 +1,6 @@
-<script type="module">
+// Load projects from projects.json and render cards
+export default null;
+
 async function loadProjects(){
   const grid = document.getElementById('project-grid');
   if (!grid) return;
@@ -29,4 +31,3 @@ async function loadProjects(){
   }
 }
 loadProjects();
-</script>
