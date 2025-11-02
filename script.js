@@ -1,4 +1,4 @@
-// Theme toggle + smooth nav + persistence
+// ===== Theme toggle + nav =====
 (function(){
   const root = document.documentElement;
   const toggle = document.getElementById('theme-toggle');
@@ -50,27 +50,22 @@
     });
   });
 })();
+
 // ===== Fancy cursor (desktop only) =====
 (function(){
   if (!window.matchMedia || !window.matchMedia('(pointer: fine)').matches) return;
-  const dot = document.getElementById('cursor-dot');
-  if (!dot) return;
+  const dot = document.getElementById('cursor-dot'); if (!dot) return;
 
-  let x = window.innerWidth/2, y = window.innerHeight/2;
-  let tx = x, ty = y;
+  let x = innerWidth/2, y = innerHeight/2, tx = x, ty = y;
+  addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
 
-  window.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
-
-  function animate(){
-    // simple easing
+  (function loop(){
     x += (tx - x) * 0.18;
     y += (ty - y) * 0.18;
     dot.style.transform = `translate(${x}px, ${y}px)`;
-    requestAnimationFrame(animate);
-  }
-  animate();
+    requestAnimationFrame(loop);
+  })();
 
-  // Enlarge on interactive elements
   const hoverables = 'a, button, .btn';
   document.addEventListener('mouseover', e => {
     if (e.target.closest(hoverables)) document.documentElement.classList.add('link-hover');
