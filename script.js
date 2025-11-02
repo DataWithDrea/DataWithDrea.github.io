@@ -50,3 +50,32 @@
     });
   });
 })();
+// ===== Fancy cursor (desktop only) =====
+(function(){
+  if (!window.matchMedia || !window.matchMedia('(pointer: fine)').matches) return;
+  const dot = document.getElementById('cursor-dot');
+  if (!dot) return;
+
+  let x = window.innerWidth/2, y = window.innerHeight/2;
+  let tx = x, ty = y;
+
+  window.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+
+  function animate(){
+    // simple easing
+    x += (tx - x) * 0.18;
+    y += (ty - y) * 0.18;
+    dot.style.transform = `translate(${x}px, ${y}px)`;
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // Enlarge on interactive elements
+  const hoverables = 'a, button, .btn';
+  document.addEventListener('mouseover', e => {
+    if (e.target.closest(hoverables)) document.documentElement.classList.add('link-hover');
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest(hoverables)) document.documentElement.classList.remove('link-hover');
+  });
+})();
