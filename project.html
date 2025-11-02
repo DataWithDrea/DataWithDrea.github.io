@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Project • Data With Drea</title>
   <meta name="description" content="Case study and live demo for a Data With Drea project." />
-  <link rel="stylesheet" href="./style.css" />
+
+  <!-- One favicon only -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <header class="site-header">
@@ -21,7 +25,6 @@
 
   <main class="section">
     <article id="project" class="card">
-      <!-- Filled by script -->
       <p class="muted">Loading project…</p>
     </article>
   </main>
@@ -30,7 +33,7 @@
     <small>© <span id="year"></span> Data With Drea</small>
   </footer>
 
-  <!-- Cute cursor element (inherits site styles) -->
+  <!-- Cute cursor element -->
   <div id="cursor-dot" aria-hidden="true"></div>
 
   <script>
@@ -50,7 +53,7 @@
       }
     })();
 
-    // Render the project from projects.json?id=...
+    // Render project from projects.json?id=...
     async function renderProject(){
       const wrap = document.getElementById('project');
       const id = new URLSearchParams(location.search).get('id');
@@ -59,23 +62,17 @@
       try{
         const data = await (await fetch('./projects.json', {cache:'no-store'})).json();
         const p = (data.projects || []).find(x => x.id === id);
-
         if (!p){ wrap.innerHTML = '<p>Project not found.</p>'; return; }
 
         document.title = `${p.title} • Data With Drea`;
-
-        const hasHF = p.live_url && /huggingface\.co\/spaces/i.test(p.live_url);
-        const embed = hasHF
-          ? `<div class="embed"><iframe src="${p.live_url}" title="${p.title} demo" loading="lazy" allow="clipboard-write; fullscreen"></iframe></div>`
-          : '';
+        const isHF = p.live_url && /huggingface\.co\/spaces/i.test(p.live_url);
+        const embed = isHF ? `<div class="embed"><iframe src="${p.live_url}" title="${p.title} demo" loading="lazy" allow="clipboard-write; fullscreen"></iframe></div>` : '';
 
         wrap.innerHTML = `
           ${p.image ? `<img class="thumb" src="${p.image}" alt="${p.title} preview" />` : ''}
           <h1 style="margin-top:8px">${p.title}</h1>
           <p class="muted small">
-            ${p.year ? `${p.year}` : ''}
-            ${Array.isArray(p.tags) && p.tags.length ? ` • ${p.tags.join(', ')}` : ''}
-            ${p.impact ? ` • Impact: ${p.impact}` : ''}
+            ${p.year || ''} ${Array.isArray(p.tags)&&p.tags.length ? ' • ' + p.tags.join(', ') : ''} ${p.impact? ' • Impact: '+p.impact : ''}
           </p>
           <div class="content">${p.description_html || '<p>Case study coming soon.</p>'}</div>
           ${embed}
