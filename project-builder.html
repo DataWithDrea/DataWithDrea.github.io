@@ -4,17 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Project Builder • Data With Drea</title>
-  <meta name="description" content="Generate a JSON object for your projects.json file." />
-
-  <!-- One favicon only -->
+  <meta name="description" content="Generate a JSON object for your projects.json file.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-
   <link rel="stylesheet" href="./style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
   <style>
     .form{display:grid;gap:12px;max-width:900px;margin:24px auto}
     .form label{font-weight:600}
-    .form input,.form textarea, .form select{
+    .form input,.form textarea,.form select{
       width:100%;padding:12px;border-radius:var(--radius);
       border:1px solid var(--border);background:var(--card);color:var(--text)
     }
@@ -23,6 +20,7 @@
     .tips{max-width:900px;margin:0 auto}
     .tips .card{margin-top:12px}
     .muted small{opacity:.9}
+    @media (max-width:800px){ .row{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
