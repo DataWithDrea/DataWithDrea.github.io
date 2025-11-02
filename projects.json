@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "owner": "DataWithDrea",
+  "projects": [
+    {
+      "id": "matchmaker-ai",
+      "title": "MatchMaker AI",
+      "summary": "NLP resume matcher ranking candidates by fit to a JD.",
+      "description_html": "<h3>What it does</h3><p>Helps recruiters quickly see which candidates match a job description.</p><h3>How it works</h3><ul><li>Inputs: pasted resumes + one job description</li><li>Logic: compares text (TF-IDF now; embeddings later) to compute similarity</li><li>Output: a sorted list of best matches</li></ul><h3>What I built</h3><ul><li>JD & resume parsing</li><li>Similarity scoring + ranking</li><li>Simple demo UI</li></ul><h3>Impact</h3><p>Target: cut screening time by ~35%.</p><h3>Next</h3><p>Add embeddings and an explainability panel listing matched skills.</p>",
+      "tags": ["Python", "NLP", "Pandas", "scikit-learn"],
+      "impact": "Target: cut screening time by ~35%",
+      "repo_url": "",
+      "live_url": "https://huggingface.co/spaces/DataWithDrea/matchmaker-ai",
+      "image": "img/placeholder.svg",
+      "year": 2025
+    },
+    {
+      "id": "automation-roi",
+      "title": "Automation ROI Tracker",
+      "summary": "SQL + BI model to quantify time and cost savings from automations.",
+      "description_html": "<h3>What it does</h3><p>Shows the business value of automations in hours and dollars saved.</p><h3>How it works</h3><ul><li>Inputs: process times + volumes</li><li>Logic: SQL model + BI visuals</li><li>Output: KPI deltas and trend charts</li></ul><h3>Impact</h3><p>Target: save ~8 hrs/mo reporting.</p><h3>Next</h3><p>Add scenario toggles and better source tracking.</p>",
+      "tags": ["SQL", "Analytics", "BI"],
+      "impact": "Target: save ~8 hrs/mo reporting",
+      "repo_url": "",
+      "live_url": "",
+      "image": "img/placeholder.svg",
+      "year": 2025
+    },
+    {
+      "id": "recruiting-dashboard",
+      "title": "Recruiting Workflow Dashboard",
+      "summary": "Visualizes recruiting KPIs with automated updates via Sheets API.",
+      "description_html": "<h3>What it does</h3><p>Tracks time-to-fill, source quality, and compliance in one place.</p><h3>How it works</h3><ul><li>Inputs: Google Sheets data</li><li>Logic: scheduled refresh + visuals</li><li>Output: KPI cards + drill-downs</li></ul><h3>Impact</h3><p>Target: reduce manual reporting steps by 60%.</p><h3>Next</h3><p>Multi-location comparisons and cohort trends.</p>",
+      "tags": ["Power BI", "Google Sheets API"],
+      "impact": "Target: reduce manual reporting steps by 60%",
+      "repo_url": "",
+      "live_url": "",
+      "image": "img/placeholder.svg",
+      "year": 2024
+    },
+    {
+      "id": "portfolio-site",
+      "title": "Portfolio Website",
+      "summary": "Static-first GitHub Pages site with JSON-powered projects.",
+      "description_html": "<p>Fast, clean, and content-first portfolio. Edit <code>projects.json</code> to add showcases without local setup.</p>",
+      "tags": ["Static Site", "GitHub Pages"],
+      "impact": "Target: clear story + easy updates",
+      "repo_url": "https://github.com/DataWithDrea/DataWithDrea.github.io",
+      "live_url": "https://datawithdrea.github.io/",
+      "image": "img/placeholder.svg",
+      "year": 2025
+    }
+  ]
+}
