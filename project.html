@@ -4,44 +4,106 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Project • Data With Drea</title>
+  <meta name="description" content="Case study and live demo for a Data With Drea project." />
   <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-<header class="site-header">
-  <a class="brand" href="./">← Back to Portfolio</a>
-</header>
-<main class="section">
-  <article id="project"></article>
-</main>
-<footer class="footer"><small>© <span id="year"></span> Data With Drea</small></footer>
+  <header class="site-header">
+    <a class="brand" href="./">← Data With Drea</a>
+    <nav class="nav" id="nav">
+      <a href="./#projects">Projects</a>
+      <a href="./#about">About</a>
+      <a href="./#contact">Connect</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </header>
 
-<script>
-const year=document.getElementById('year'); if(year) year.textContent=new Date().getFullYear();
-async function render(){
-  const el = document.getElementById('project');
-  const id = new URLSearchParams(location.search).get('id');
-  if(!id){ el.innerHTML='<p>Missing project id.</p>'; return; }
-  try{
-    const data = await (await fetch('./projects.json',{cache:'no-store'})).json();
-    const p = (data.projects||[]).find(x=>x.id===id);
-    if(!p){ el.innerHTML='<p>Project not found.</p>'; return; }
-    document.title = p.title + ' • Data With Drea';
-    const isHF = p.live_url && /huggingface\.co\/spaces/i.test(p.live_url);
-    const embed = isHF ? `<div class="embed"><iframe src="${p.live_url}" title="${p.title} demo" loading="lazy"></iframe></div>` : '';
-    el.innerHTML = `
-      <img class="hero-thumb" src="${p.image||'img/placeholder.svg'}" alt="${p.title} preview"/>
-      <h1>${p.title}</h1>
-      <p class="muted">${p.year||''} ${Array.isArray(p.tags)?'• '+p.tags.join(', '):''} ${p.impact? '• Impact: '+p.impact:''}</p>
-      <div class="content">${p.description_html||'<p>Case study coming soon.</p>'}</div>
-      ${embed}
-      <h3>Links</h3>
-      <div class="buttons">
-        ${p.repo_url ? `<a class="btn secondary" href="${p.repo_url}" target="_blank" rel="noopener">GitHub</a>` : ''}
-        ${p.live_url ? `<a class="btn" href="${p.live_url}" target="_blank" rel="noopener">Live</a>` : ''}
-      </div>`;
-  }catch{ el.innerHTML='<p>Failed to load project.</p>'; }
-}
-render();
-</script>
+  <main class="section">
+    <article id="project" class="card">
+      <!-- Filled by script -->
+      <p class="muted">Loading project…</p>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <small>© <span id="year"></span> Data With Drea</small>
+  </footer>
+
+  <!-- Cute cursor element (inherits site styles) -->
+  <div id="cursor-dot" aria-hidden="true"></div>
+
+  <script>
+    // Footer year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Mobile nav
+    (function(){
+      const nav = document.getElementById('nav');
+      const btn = document.querySelector('.nav-toggle');
+      if (btn && nav){
+        btn.addEventListener('click', ()=> {
+          const open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+      }
+    })();
+
+    // Render the project from projects.json?id=...
+    async function renderProject(){
+      const wrap = document.getElementById('project');
+      const id = new URLSearchParams(location.search).get('id');
+      if (!id){ wrap.innerHTML = '<p>Missing project id.</p>'; return; }
+
+      try{
+        const data = await (await fetch('./projects.json', {cache:'no-store'})).json();
+        const p = (data.projects || []).find(x => x.id === id);
+
+        if (!p){ wrap.innerHTML = '<p>Project not found.</p>'; return; }
+
+        document.title = `${p.title} • Data With Drea`;
+
+        const hasHF = p.live_url && /huggingface\.co\/spaces/i.test(p.live_url);
+        const embed = hasHF
+          ? `<div class="embed"><iframe src="${p.live_url}" title="${p.title} demo" loading="lazy" allow="clipboard-write; fullscreen"></iframe></div>`
+          : '';
+
+        wrap.innerHTML = `
+          ${p.image ? `<img class="thumb" src="${p.image}" alt="${p.title} preview" />` : ''}
+          <h1 style="margin-top:8px">${p.title}</h1>
+          <p class="muted small">
+            ${p.year ? `${p.year}` : ''}
+            ${Array.isArray(p.tags) && p.tags.length ? ` • ${p.tags.join(', ')}` : ''}
+            ${p.impact ? ` • Impact: ${p.impact}` : ''}
+          </p>
+          <div class="content">${p.description_html || '<p>Case study coming soon.</p>'}</div>
+          ${embed}
+          <h3>Links</h3>
+          <div class="buttons">
+            ${p.repo_url ? `<a class="btn secondary" href="${p.repo_url}" target="_blank" rel="noopener">GitHub</a>` : ''}
+            ${p.live_url ? `<a class="btn" href="${p.live_url}" target="_blank" rel="noopener">Live</a>` : ''}
+            <a class="btn secondary" href="./#projects">Back to Projects</a>
+          </div>
+        `;
+      }catch(e){
+        console.error(e);
+        wrap.innerHTML = '<p>Failed to load project.</p>';
+      }
+    }
+    renderProject();
+
+    // Fancy cursor
+    (function(){
+      if (!window.matchMedia || !window.matchMedia('(pointer: fine)').matches) return;
+      const dot = document.getElementById('cursor-dot'); if (!dot) return;
+      let x = innerWidth/2, y = innerHeight/2, tx = x, ty = y;
+      addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+      (function loop(){ x += (tx-x)*.18; y += (ty-y)*.18; dot.style.transform = `translate(${x}px, ${y}px)`; requestAnimationFrame(loop) })();
+      const hoverables = 'a, button, .btn';
+      document.addEventListener('mouseover', e => { if (e.target.closest(hoverables)) document.documentElement.classList.add('link-hover'); });
+      document.addEventListener('mouseout',  e => { if (e.target.closest(hoverables)) document.documentElement.classList.remove('link-hover'); });
+    })();
+  </script>
 </body>
 </html>
