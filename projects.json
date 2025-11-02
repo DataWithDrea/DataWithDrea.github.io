@@ -1,54 +1,52 @@
 {
-  "version": 1,
-  "owner": "DataWithDrea",
   "projects": [
     {
       "id": "matchmaker-ai",
       "title": "MatchMaker AI",
-      "summary": "NLP resume matcher ranking candidates by fit to a JD.",
-      "description_html": "<h3>What it does</h3><p>Helps recruiters quickly see which candidates match a job description.</p><h3>How it works</h3><ul><li>Inputs: pasted resumes + one job description</li><li>Logic: compares text (TF-IDF now; embeddings later) to compute similarity</li><li>Output: a sorted list of best matches</li></ul><h3>What I built</h3><ul><li>JD & resume parsing</li><li>Similarity scoring + ranking</li><li>Simple demo UI</li></ul><h3>Impact</h3><p>Target: cut screening time by ~35%.</p><h3>Next</h3><p>Add embeddings and an explainability panel listing matched skills.</p>",
+      "year": 2025,
+      "summary": "NLP-powered resume matcher that ranks candidates by job fit using semantic similarity.",
+      "description_html": "<h3>What it does</h3><p>Extracts keywords/embeddings from resumes and job descriptions, compares them, and returns an ordered shortlist with scores.</p><h3>How it works</h3><ul><li>Preprocess text (tokenize, clean, lemmatize)</li><li>Vectorize with TF-IDF or embeddings</li><li>Compute similarity (cosine) and rank</li></ul><h3>Why it matters</h3><p>Reduces manual screening time and helps recruiters focus on high-signal candidates.</p>",
       "tags": ["Python", "NLP", "Pandas", "scikit-learn"],
-      "impact": "Target: cut screening time by ~35%",
-      "repo_url": "",
+      "impact": "Cuts screening time ~25–35%",
+      "repo_url": "https://github.com/DataWithDrea/matchmaker-ai",
       "live_url": "https://huggingface.co/spaces/DataWithDrea/matchmaker-ai",
-      "image": "img/placeholder.svg",
-      "year": 2025
+      "image": "img/matchmaker-ai.png"
     },
     {
-      "id": "automation-roi",
+      "id": "automation-roi-tracker",
       "title": "Automation ROI Tracker",
-      "summary": "SQL + BI model to quantify time and cost savings from automations.",
-      "description_html": "<h3>What it does</h3><p>Shows the business value of automations in hours and dollars saved.</p><h3>How it works</h3><ul><li>Inputs: process times + volumes</li><li>Logic: SQL model + BI visuals</li><li>Output: KPI deltas and trend charts</li></ul><h3>Impact</h3><p>Target: save ~8 hrs/mo reporting.</p><h3>Next</h3><p>Add scenario toggles and better source tracking.</p>",
-      "tags": ["SQL", "Analytics", "BI"],
-      "impact": "Target: save ~8 hrs/mo reporting",
-      "repo_url": "",
+      "year": 2025,
+      "summary": "SQL + BI dashboard that quantifies time and cost savings from automations.",
+      "description_html": "<h3>What it does</h3><p>Aggregates task durations, frequencies, and costs to calculate ROI and payback for each automation.</p><h3>How it works</h3><ul><li>ETL from Sheets/CSV to SQL</li><li>BI visuals for time saved and impact</li><li>Filters by team, process, quarter</li></ul><h3>Outcome</h3><p>Clear picture of automation value for leadership.</p>",
+      "tags": ["SQL", "Power BI", "Analytics"],
+      "impact": "Visibility into time saved across teams",
+      "repo_url": "https://github.com/DataWithDrea/automation-roi-tracker",
       "live_url": "",
-      "image": "img/placeholder.svg",
-      "year": 2025
+      "image": "img/automation-roi.png"
     },
     {
-      "id": "recruiting-dashboard",
+      "id": "recruiting-workflow-dashboard",
       "title": "Recruiting Workflow Dashboard",
-      "summary": "Visualizes recruiting KPIs with automated updates via Sheets API.",
-      "description_html": "<h3>What it does</h3><p>Tracks time-to-fill, source quality, and compliance in one place.</p><h3>How it works</h3><ul><li>Inputs: Google Sheets data</li><li>Logic: scheduled refresh + visuals</li><li>Output: KPI cards + drill-downs</li></ul><h3>Impact</h3><p>Target: reduce manual reporting steps by 60%.</p><h3>Next</h3><p>Multi-location comparisons and cohort trends.</p>",
-      "tags": ["Power BI", "Google Sheets API"],
-      "impact": "Target: reduce manual reporting steps by 60%",
-      "repo_url": "",
+      "year": 2024,
+      "summary": "Tracks hiring metrics across locations with Google Sheets API updates.",
+      "description_html": "<h3>What it does</h3><p>Shows time-to-fill, pipeline health, and source quality with near-real-time data.</p><h3>How it works</h3><ul><li>Sheets API pulls into BI</li><li>Scheduled refresh</li><li>Drilldowns by role/location</li></ul>",
+      "tags": ["Power BI", "Google Sheets API", "Ops"],
+      "impact": "Reduced manual reporting hours by ~40%",
+      "repo_url": "https://github.com/DataWithDrea/recruiting-workflow-dashboard",
       "live_url": "",
-      "image": "img/placeholder.svg",
-      "year": 2024
+      "image": "img/recruiting-dashboard.png"
     },
     {
       "id": "portfolio-site",
       "title": "Portfolio Website",
-      "summary": "Static-first GitHub Pages site with JSON-powered projects.",
-      "description_html": "<p>Fast, clean, and content-first portfolio. Edit <code>projects.json</code> to add showcases without local setup.</p>",
-      "tags": ["Static Site", "GitHub Pages"],
-      "impact": "Target: clear story + easy updates",
+      "year": 2025,
+      "summary": "Static site (this one!) for projects, learning journey, and case studies.",
+      "description_html": "<h3>What it does</h3><p>Showcases projects and embeds live demos (Hugging Face) with a JSON-driven grid.</p><h3>Stack</h3><ul><li>Vanilla HTML/CSS/JS</li><li>GitHub Pages</li><li>JSON data source</li></ul>",
+      "tags": ["HTML", "CSS", "JavaScript", "GitHub Pages"],
+      "impact": "Central hub for learning in public",
       "repo_url": "https://github.com/DataWithDrea/DataWithDrea.github.io",
-      "live_url": "https://datawithdrea.github.io/",
-      "image": "img/placeholder.svg",
-      "year": 2025
+      "live_url": "https://datawithdrea.github.io",
+      "image": "img/placeholder.svg"
     }
   ]
 }
