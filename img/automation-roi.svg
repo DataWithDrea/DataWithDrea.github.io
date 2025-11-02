@@ -1,0 +1,25 @@
+<!-- Automation ROI Tracker — neon charts -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#66fcf1"/><stop offset="1" stop-color="#8ee4af"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="20" fill="#0e141b"/>
+  <rect x="10" y="10" width="620" height="340" rx="16" fill="none" stroke="url(#g)" stroke-width="4" opacity="0.75"/>
+  <!-- axes -->
+  <path d="M70 280 H560 M90 90 V280" stroke="#223444" stroke-width="2"/>
+  <!-- bars -->
+  <g fill="url(#g)" opacity="0.9">
+    <rect x="110" y="240" width="40" height="40" rx="6"/>
+    <rect x="190" y="210" width="40" height="70" rx="6"/>
+    <rect x="270" y="175" width="40" height="105" rx="6"/>
+    <rect x="350" y="135" width="40" height="145" rx="6"/>
+    <rect x="430" y="95"  width="40" height="185" rx="6"/>
+  </g>
+  <!-- line -->
+  <path d="M110 255 L210 230 L290 205 L370 165 L450 120" fill="none" stroke="#66fcf1" stroke-width="3"/>
+  <!-- title -->
+  <text x="32" y="320" fill="#eaf2ff" font-family="Poppins, sans-serif" font-weight="600" font-size="22">Automation ROI Tracker</text>
+  <text x="32" y="345" fill="#9bb0c8" font-family="Poppins, sans-serif" font-size="16">Time Saved • Cost Impact</text>
+</svg>
