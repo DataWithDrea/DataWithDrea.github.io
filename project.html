@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project • Data With Drea</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="./">← Back to Portfolio</a>
+</header>
+<main class="section">
+  <article id="project"></article>
+</main>
+<footer class="footer"><small>© <span id="year"></span> Data With Drea</small></footer>
+
+<script>
+const year=document.getElementById('year'); if(year) year.textContent=new Date().getFullYear();
+async function render(){
+  const el = document.getElementById('project');
+  const id = new URLSearchParams(location.search).get('id');
+  if(!id){ el.innerHTML='<p>Missing project id.</p>'; return; }
+  try{
+    const data = await (await fetch('./projects.json',{cache:'no-store'})).json();
+    const p = (data.projects||[]).find(x=>x.id===id);
+    if(!p){ el.innerHTML='<p>Project not found.</p>'; return; }
+    document.title = p.title + ' • Data With Drea';
+    const isHF = p.live_url && /huggingface\.co\/spaces/i.test(p.live_url);
+    const embed = isHF ? `<div class="embed"><iframe src="${p.live_url}" title="${p.title} demo" loading="lazy"></iframe></div>` : '';
+    el.innerHTML = `
+      <img class="hero-thumb" src="${p.image||'img/placeholder.svg'}" alt="${p.title} preview"/>
+      <h1>${p.title}</h1>
+      <p class="muted">${p.year||''} ${Array.isArray(p.tags)?'• '+p.tags.join(', '):''} ${p.impact? '• Impact: '+p.impact:''}</p>
+      <div class="content">${p.description_html||'<p>Case study coming soon.</p>'}</div>
+      ${embed}
+      <h3>Links</h3>
+      <div class="buttons">
+        ${p.repo_url ? `<a class="btn secondary" href="${p.repo_url}" target="_blank" rel="noopener">GitHub</a>` : ''}
+        ${p.live_url ? `<a class="btn" href="${p.live_url}" target="_blank" rel="noopener">Live</a>` : ''}
+      </div>`;
+  }catch{ el.innerHTML='<p>Failed to load project.</p>'; }
+}
+render();
+</script>
+</body>
+</html>
