@@ -5,8 +5,13 @@
   const nav = document.getElementById('nav');
   const btn = document.querySelector('.nav-toggle');
   const year = document.getElementById('year');
+  const upd = document.getElementById('updated');
 
   if (year) year.textContent = new Date().getFullYear();
+  if (upd){
+    const d = new Date(document.lastModified);
+    upd.textContent = d.toLocaleDateString(undefined, {year:'numeric', month:'short'});
+  }
 
   const getSystemTheme = () =>
     window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
@@ -36,6 +41,7 @@
     });
   }
 
+  // Smooth scroll for in-page links
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const id = a.getAttribute('href').slice(1);
@@ -49,7 +55,23 @@
       }
     });
   });
-})();
+
+  // ===== Active nav link on scroll =====
+  const sections = ['about','current','tracks','projects','journey','stats','contact']
+    .map(id => document.getElementById(id)).filter(Boolean);
+  const links = [...document.querySelectorAll('.nav a[href^="#"]')];
+
+  if ('IntersectionObserver' in window && sections.length && links.length){
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting) return;
+        const id = e.target.id;
+        links.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#'+id));
+      });
+    },{ rootMargin:'-45% 0px -45% 0px', threshold:0 });
+    sections.forEach(s=>io.observe(s));
+  }
+})();  // <— keep this!
 
 // ===== Fancy cursor (desktop only) =====
 (function(){
