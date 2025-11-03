@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://datawithdrea.github.io/sitemap.xml
