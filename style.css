@@ -274,6 +274,8 @@ body::after{
 @media (max-width:720px){
   #contact .cta-row{ justify-content:center }
 }
+.nav a.active{ color:var(--text); text-shadow:0 0 10px rgba(102,252,241,.5) }
+
 /* Hide accidental duplicate contact button row */
 #contact .cta-row + .cta-row { display: none !important; }
 .nav a.active{ color:var(--text); text-shadow:0 0 10px rgba(102,252,241,.5) }
