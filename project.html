@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Project • Data With Drea</title>
   <meta name="description" content="Case study and live demo for a Data With Drea project.">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/fav-v2.svg" type="image/svg+xml" sizes="any">
+  <link rel="shortcut icon" href="/fav-v2.svg" type="image/svg+xml">
+  <link rel="mask-icon" href="/fav-v2.svg" color="#66fcf1">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
 </head>
@@ -30,15 +32,12 @@
     <small>© <span id="year"></span> Data With Drea</small>
   </footer>
 
-  <!-- Cute cursor element -->
   <div id="cursor-dot" aria-hidden="true"></div>
 
   <script>
-    // Footer year
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Mobile nav
     (function(){
       const nav = document.getElementById('nav');
       const btn = document.querySelector('.nav-toggle');
@@ -50,7 +49,6 @@
       }
     })();
 
-    // Render project from projects.json?id=...
     async function renderProject(){
       const wrap = document.getElementById('project');
       const id = new URLSearchParams(location.search).get('id');
@@ -87,7 +85,6 @@
     }
     renderProject();
 
-    // Fancy cursor
     (function(){
       if (!window.matchMedia || !window.matchMedia('(pointer: fine)').matches) return;
       const dot = document.getElementById('cursor-dot'); if (!dot) return;
