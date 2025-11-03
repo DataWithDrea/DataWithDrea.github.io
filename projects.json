@@ -10,7 +10,7 @@
       "impact": "Cuts screening time ~25–35%",
       "repo_url": "https://github.com/DataWithDrea/matchmaker-ai",
       "live_url": "https://huggingface.co/spaces/DataWithDrea/matchmaker-ai",
-      "image": "img/matchmaker-ai.png"
+      "image": "img/matchmaker-ai.svg"
     },
     {
       "id": "automation-roi-tracker",
@@ -22,7 +22,7 @@
       "impact": "Visibility into time saved across teams",
       "repo_url": "https://github.com/DataWithDrea/automation-roi-tracker",
       "live_url": "",
-      "image": "img/automation-roi.png"
+      "image": "img/automation-roi.svg"
     },
     {
       "id": "recruiting-workflow-dashboard",
@@ -34,7 +34,7 @@
       "impact": "Reduced manual reporting hours by ~40%",
       "repo_url": "https://github.com/DataWithDrea/recruiting-workflow-dashboard",
       "live_url": "",
-      "image": "img/recruiting-dashboard.png"
+      "image": "img/recruiting-dashboard.svg"
     },
     {
       "id": "portfolio-site",
