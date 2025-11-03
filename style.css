@@ -245,3 +245,32 @@ body::after{
   /* Avoid page breaks mid-card/table when possible */
   .card, .table-wrap{ break-inside:avoid }
 }
+/* --- Stats layout fix (tablet/mobile) --- */
+.stats-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  max-width:980px;
+  width:100%;
+  margin:0 auto;
+}
+@media (min-width:900px){ /* change 900→1100 if iPad still feels cramped */
+  .stats-grid{ grid-template-columns:1fr 1fr }
+}
+.stats-grid img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--card);
+}
+
+/* Ensure sections never collide */
+.section{ clear:both }
+
+/* Contact buttons: tidy wrap/align */
+#contact .cta-row{ justify-content:flex-start; flex-wrap:wrap }
+@media (max-width:720px){
+  #contact .cta-row{ justify-content:center }
+}
