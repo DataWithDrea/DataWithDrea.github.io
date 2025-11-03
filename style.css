@@ -274,3 +274,5 @@ body::after{
 @media (max-width:720px){
   #contact .cta-row{ justify-content:center }
 }
+/* Hide accidental duplicate contact button row */
+#contact .cta-row + .cta-row { display: none !important; }
