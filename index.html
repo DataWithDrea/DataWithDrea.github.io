@@ -1,210 +1,112 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data With Drea</title>
-  <meta name="description" content="Recruiter turned developer—building systems that make work smarter, not harder.">
-
-  <!-- Cute favicon -->
-  <link rel="icon" href="/fav-v2.svg" type="image/svg+xml" sizes="any">
-  <link rel="shortcut icon" href="/fav-v2.svg" type="image/svg+xml">
-  <link rel="mask-icon" href="/fav-v2.svg" color="#66fcf1">
-
-  <!-- Social cards (optional but nice) -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Data With Drea">
-  <meta property="og:description" content="Recruiter → Developer • AI, Automation, and Data Storytelling">
-  <meta property="og:url" content="https://datawithdrea.github.io/">
-  <meta property="og:image" content="https://datawithdrea.github.io/social-card.svg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Data With Drea">
-  <meta name="twitter:description" content="Recruiter → Developer • AI, Automation, and Data Storytelling">
-  <meta name="twitter:image" content="https://datawithdrea.github.io/social-card.svg">
-
-  <!-- Structured data -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Andrea",
-    "alternateName":"Drea",
-    "jobTitle":"Aspiring Software Engineer (AI & Automation)",
-    "description":"Recruiter turned developer building systems that make work smarter.",
-    "url":"https://datawithdrea.github.io/",
-    "image":"https://datawithdrea.github.io/fav-v2.svg",
-    "sameAs":[
-      "https://github.com/DataWithDrea",
-      "https://www.linkedin.com/in/andreaconnects"
-    ],
-    "knowsAbout":["Python","SQL","Power BI","Automation","NLP","React","APIs","Data Storytelling"],
-    "worksFor": { "@type":"Organization", "name":"Data With Drea" }
-  }
-  </script>
-
-  <!-- Fonts + CSS -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <a class="skip-link" href="#projects">Skip to projects</a>
-
-  <header class="site-header">
-    <a class="brand" href="#home">Data With Drea</a>
-    <nav class="nav" id="nav">
-      <a href="#about">About</a>
-      <a href="#current">Currently</a>
-      <a href="#tracks">Learning Tracks</a>
-      <a href="#projects">Projects</a>
-      <a href="#journey">Journey</a>
-      <a href="#stats">Stats</a>
-      <a href="#contact">Connect</a>
-      <a class="builder" href="./project-builder.html">+ Project Builder</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark">🌙</button>
+<body class="dark-theme">
+  <header class="hero">
+    <h1>🌿 Data With Drea</h1>
+    <p>Hi, I’m <strong>Drea</strong> — a recruiter-turned-developer leveling up into a Software Engineer with a focus on AI & Automation 👩🏾‍💻✨<br>
+    I build smart systems that connect people, processes, and possibilities.</p>
+    <div class="cta-buttons">
+      <a href="#projects">🚀 View Projects</a>
+      <a href="https://github.com/DataWithDrea" target="_blank">🐙 GitHub</a>
+      <a href="/resume.pdf" target="_blank">📄 Résumé</a>
+    </div>
   </header>
 
-  <!-- NOTE: added 'reveal' to hero -->
-  <main id="home" class="hero reveal">
-    <h1>Hi, I’m Drea 👋🏾</h1>
-    <p class="tagline">Recruiter → Developer using automation and analytics to make work smarter, not harder.</p>
-    <p class="muted">BSCS (AI &amp; Automation) @ WGU • Graduating June 2026 • Cooper City, FL</p>
-    <div class="cta-row">
-      <a class="btn" href="#projects">Explore Projects</a>
-      <a class="btn secondary" href="/Andrea-Resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
-    </div>
-  </main>
-
-  <section id="about" class="section">
+  <section id="about">
     <h2>💫 About Me</h2>
-    <ul class="bullets">
-      <li>🌍 Based in Cooper City, Florida (Fort Lauderdale area)</li>
-      <li>🎓 BSCS @ WGU — focus: AI, Automation, and Software Systems</li>
-      <li>💼 8+ years of experience in talent acquisition, data reporting, and process improvement</li>
-      <li>🧠 Passionate about bridging people, data, and technology</li>
-      <li>🚀 Career-changer turning curiosity into code and ideas into automation</li>
-    </ul>
-    <p>This is my tech learning lab + portfolio hub, where you can explore the projects, automations, and data tools I’m building while learning Python, SQL, and workflow optimization.</p>
+    <p>I’m Drea — based in sunny South Florida ☀️ — with 8+ years in talent acquisition, data storytelling, and process optimization.<br>
+    Now, I’m building the future of work with code, automation, and a whole lot of 💅🏾 energy.</p>
+    <p>I’m earning my B.S. in Computer Science (AI + automation, WGU – 2026 🎓).<br>
+    My mission? Build systems that help teams work smarter, not harder.</p>
+    <blockquote>⚡ I’m not just learning tech — I’m reshaping how we work with it.</blockquote>
   </section>
 
-  <section id="current" class="section">
+  <section id="currently">
     <h2>🌱 Currently</h2>
-    <ul class="bullets">
-      <li>🔭 Working on: <strong>AI Resume Parser</strong> &amp; <strong>Recruiting Workflow Dashboard</strong></li>
-      <li>🌱 Learning: Python (intermediate), SQL analytics, and API integration</li>
-      <li>⚙️ Exploring: Zapier + Airtable automations for workflow design</li>
-      <li>💬 Ask me about: Career transitions, data storytelling, and building with purpose</li>
+    <ul>
+      <li>🔧 Building: <strong>MatchMaker.AI</strong> – resume & job matching powered by NLP</li>
+      <li>📚 Learning: Python, APIs, async workflows</li>
+      <li>🧠 Exploring: LLMs + automation tools</li>
+      <li>💬 Ask Me About: career transitions, automation, data-driven workflows</li>
     </ul>
-    <div class="cards now-next-later">
-      <article class="card"><h3>Now</h3><p>AI Resume Parser POC + data cleaning pipeline.</p></article>
-      <article class="card"><h3>Next</h3><p>Recruiting KPIs dashboard + Sheets API auto-refresh.</p></article>
-      <article class="card"><h3>Later</h3><p>End-to-end app (React + Flask) for candidate comparisons.</p></article>
-    </div>
   </section>
 
-  <section id="tracks" class="section">
+  <section id="tracks">
     <h2>🧭 Learning Tracks</h2>
-    <div class="table-wrap">
-      <table class="table">
-        <thead><tr><th>Track</th><th>Focus</th><th>Tools &amp; Topics</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>AI &amp; Automation</td>
-            <td>Workflow scripts, chatbot assistants, predictive analytics</td>
-            <td>Python, OpenAI API, Pandas, scikit-learn</td>
-          </tr>
-          <tr>
-            <td>Full-Stack Development</td>
-            <td>Tools &amp; dashboards for recruiters &amp; learners</td>
-            <td>React.js, Node/Express, Flask, REST APIs</td>
-          </tr>
-          <tr>
-            <td>Data Analytics</td>
-            <td>Turning raw data into insights</td>
-            <td>SQL, Power BI, Google Sheets API</td>
-          </tr>
-          <tr>
-            <td>Data Structures &amp; Algorithms</td>
-            <td>Strengthening CS fundamentals</td>
-            <td>Python, LeetCode, HackerRank</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table>
+      <thead>
+        <tr><th>Track</th><th>Focus</th><th>Tools</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>AI & Automation</td><td>LLMs, workflow design</td><td>Python, OpenAI, Zapier</td></tr>
+        <tr><td>Full-Stack Dev</td><td>Internal tools & apps</td><td>React, Flask, Node</td></tr>
+        <tr><td>Data Analytics</td><td>Data storytelling</td><td>SQL, Power BI</td></tr>
+        <tr><td>CS Fundamentals</td><td>Problem solving</td><td>LeetCode, HackerRank</td></tr>
+      </tbody>
+    </table>
   </section>
 
-  <section id="projects" class="section">
+  <section id="projects">
     <h2>🏗️ Featured Projects</h2>
-    <div id="project-grid" class="cards"></div>
-    <p class="muted small">Use the <a href="./project-builder.html">Project Builder</a> to add more projects later.</p>
-  </section>
-
-  <section id="journey" class="section">
-    <h2>🗓️ Learning Journey</h2>
-    <ul class="timeline">
-      <li><strong>2023</strong> — Began B.S. in Computer Science at WGU.</li>
-      <li><strong>2024</strong> — Built first Power BI dashboards &amp; Python automations.</li>
-      <li><strong>2025</strong> — Expanding into AI + full-stack projects with workflow optimization focus.</li>
-      <li><strong>2026 (Goal)</strong> — Land full-time role in AI-driven software engineering.</li>
-    </ul>
-  </section>
-
-  <!-- NOTE: added 'reveal' to stats -->
-  <section id="stats" class="section reveal">
-    <h2>📊 GitHub Stats</h2>
-    <div class="stats-wrap">
-      <div class="stats-grid">
-        <img
-          alt="GitHub Stats"
-          loading="lazy"
-          src="https://github-readme-stats.vercel.app/api?username=DataWithDrea&show_icons=true&theme=calm&hide_border=false&include_all_commits=true&count_private=true"
-          onerror="this.replaceWith(Object.assign(document.createElement('p'),{textContent:'(Stats service temporarily unavailable)'}));"
-        />
-        <img
-          alt="Top Languages"
-          loading="lazy"
-          src="https://github-readme-stats.vercel.app/api/top-langs/?username=DataWithDrea&layout=compact&theme=calm&hide_border=false"
-          onerror="this.style.display='none';"
-        />
-      </div>
+    <div class="project">
+      <h3>💡 MatchMaker.AI</h3>
+      <p>Resume-to-job matcher that scores fit and recommends improvements.</p>
+      <p>🛠️ Python · Streamlit · NLP · Hugging Face</p>
+    </div>
+    <div class="project">
+      <h3>📊 Automation ROI Tracker</h3>
+      <p>Dashboard that shows time/cost saved by automations.</p>
+      <p>🛠️ SQL · Power BI · Google Sheets API</p>
+    </div>
+    <div class="project">
+      <h3>📈 Recruiting Workflow Dashboard</h3>
+      <p>Live hiring metrics with auto-updates. No spreadsheets needed.</p>
+      <p>🛠️ Power BI · Google Sheets API</p>
+    </div>
+    <div class="project">
+      <h3>🌐 Portfolio Website</h3>
+      <p>This site — showcasing my projects and journey.</p>
+      <p>🛠️ HTML · GitHub Pages · Sass</p>
     </div>
   </section>
 
-  <section id="contact" class="section">
-    <h2>🌸 Let’s Connect</h2>
-
-    <ul class="links">
-      <li>📍 Fort Lauderdale Area</li>
-      <li>📧 <a href="mailto:data.andrea@outlook.com?subject=Hello%20from%20your%20portfolio">data.andrea@outlook.com</a></li>
-      <li>💼 <a href="https://linkedin.com/in/andreaconnects" target="_blank" rel="noopener">linkedin.com/in/andreaconnects</a></li>
-      <li>🐙 <a href="https://github.com/DataWithDrea" target="_blank" rel="noopener">github.com/DataWithDrea</a></li>
-    </ul>
-
-    <!-- SINGLE CTA ROW (keep only this one) -->
-    <div class="cta-row" style="margin-top:12px">
-      <a class="btn secondary" href="mailto:data.andrea@outlook.com?subject=Hello%20from%20your%20portfolio" aria-label="Email Drea">
-        Email Me
-      </a>
-      <button class="btn secondary" type="button" aria-label="Copy email to clipboard"
-        onclick="navigator.clipboard.writeText('data.andrea@outlook.com')">
-        Copy Email
-      </button>
-      <a class="btn" href="/Andrea-Contact.vcf" download aria-label="Download contact card (vCard)">
-        Download vCard
-      </a>
-    </div>
+  <section id="stack">
+    <h2>🧰 Tech Stack & Tools</h2>
+    <p>[Your badges go here, styled for rainbow gradient hover]</p>
   </section>
 
-  <footer class="footer">
-    <small>© <span id="year"></span> Data With Drea • Updated <span id="updated"></span></small>
+  <section id="timeline">
+    <h2>🗓️ Leveling Up Timeline</h2>
+    <ul>
+      <li>📘 2023 — Started CS @ WGU</li>
+      <li>🔧 2024 — Built dashboards & automation tools</li>
+      <li>🚀 2025 — AI apps, full-stack dev, public portfolio</li>
+      <li>🎯 2026 — Land Software Engineer role</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>💌 Let’s Collaborate</h2>
+    <p>If you're into automation, AI, or building smart systems — let's build something amazing together.</p>
+    <ul>
+      <li>📍 Fort Lauderdale, FL</li>
+      <li>📧 data.andrea@outlook.com</li>
+      <li>💼 <a href="https://linkedin.com/in/andreaconnects" target="_blank">LinkedIn</a></li>
+      <li>🐙 <a href="https://github.com/DataWithDrea" target="_blank">GitHub</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <blockquote>
+      🌿 “Automation isn’t about doing less — it’s about focusing on what matters most.” <br>
+      <strong>— Drea, aka Data With Drea</strong>
+    </blockquote>
   </footer>
-
-  <!-- Cute cursor element -->
-  <div id="cursor-dot" aria-hidden="true"></div>
-
-  <!-- Scripts -->
-  <script src="./script.js"></script>
-  <script src="./projects.js" type="module"></script>
 </body>
 </html>
