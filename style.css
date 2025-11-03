@@ -316,6 +316,118 @@ body::after{
 
 /* Terracotta hover glow for links */
 a:hover{ text-shadow:0 0 8px rgba(201,123,99,.25) }
+/* ===================== SPICE PACK (Terracotta Edition) ===================== */
+
+/* 1) Subtle dotted grid texture behind everything (warm + faint) */
+html::before{
+  content:"";
+  position:fixed; inset:0; pointer-events:none; z-index:-2;
+  opacity:.12;
+  background-image:
+    radial-gradient(circle at 1px 1px, color-mix(in oklab,var(--accent) 35%, transparent) 1px, transparent 1px);
+  background-size:22px 22px;
+}
+
+/* 2) Hero: animated terracotta halo border (alive but classy) */
+.hero{
+  position:relative; overflow:hidden;
+  border-image: unset;
+}
+.hero::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  border-radius:24px;
+  margin:10px; /* inner frame */
+  border:2px solid transparent;
+  background:
+    linear-gradient(var(--card),var(--card)) padding-box,
+    conic-gradient(from 0deg, var(--accent), var(--brand), var(--accent-2), var(--accent)) border-box;
+  animation:spinFrame 18s linear infinite;
+  opacity:.45;
+}
+@keyframes spinFrame { to { transform:rotate(360deg) } }
+
+/* 3) Cards: tilt + shine on hover */
+.card{
+  transform-style:preserve-3d;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card::after{
+  content:"";
+  position:absolute; inset:-1px; border-radius:inherit; pointer-events:none;
+  background:linear-gradient(120deg, transparent 35%, rgba(255,255,255,.08) 45%, transparent 55%);
+  transform:translateZ(1px);
+  opacity:0; transition:opacity .25s ease, transform .25s ease;
+}
+.card:hover{
+  transform:translateY(-4px) rotateX(2deg) rotateY(-2deg);
+}
+.card:hover::after{
+  opacity:1; transform:translateX(6px) translateY(-6px) translateZ(2px);
+}
+
+/* 4) Buttons: micro “magnet” lift + ripple accent */
+.btn{
+  overflow:hidden;
+}
+.btn::after{
+  content:""; position:absolute; left:50%; top:50%; width:0; height:0;
+  background:radial-gradient(circle, color-mix(in oklab,var(--accent) 70%, transparent), transparent 60%);
+  transform:translate(-50%,-50%); opacity:.0; transition:opacity .2s ease, width .25s ease, height .25s ease;
+}
+.btn:hover::after{
+  opacity:.35; width:160%; height:160%;
+}
+.btn:hover{ transform:translateY(-2px) }
+
+/* 5) Section headers: small dot flourish */
+.section h2{
+  display:flex; align-items:center; gap:10px;
+}
+.section h2::before{
+  content:""; width:10px; height:10px; border-radius:50%;
+  background:linear-gradient(135deg, var(--accent), var(--brand));
+  box-shadow:0 0 12px color-mix(in oklab, var(--accent) 55%, transparent);
+}
+
+/* 6) Scroll-reveal animation (sections, cards, stats) */
+.reveal{
+  opacity:0; transform:translateY(16px) scale(.98);
+  filter:saturate(.9);
+  transition:opacity .5s ease, transform .5s ease, filter .5s ease;
+  will-change:opacity, transform, filter;
+}
+.reveal.in{
+  opacity:1; transform:none; filter:none;
+}
+
+/* 7) Active nav underline (in addition to your .active color) */
+.nav a{
+  background-image:linear-gradient(currentColor,currentColor);
+  background-size:0 2px; background-repeat:no-repeat; background-position:0 100%;
+}
+.nav a.active{ background-size:100% 2px }
+
+/* 8) Project tags: softer pills with warm hint */
+.card .tags li{
+  background:color-mix(in oklab, var(--bg) 88%, var(--accent));
+  border-color: color-mix(in oklab, var(--border) 70%, var(--accent));
+}
+
+/* 9) Table header: gentle wash */
+.table thead th{
+  background:linear-gradient(180deg, rgba(201,123,99,.08), rgba(255,255,255,0));
+}
+
+/* 10) Footer divider glow */
+.footer{
+  position:relative;
+}
+.footer::before{
+  content:""; position:absolute; left:0; right:0; top:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, var(--accent) 30%, var(--brand) 60%, transparent);
+  opacity:.35;
+}
+
 
 /* Optional: slightly stronger section divider warmth */
 .section::after{
