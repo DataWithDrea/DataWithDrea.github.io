@@ -1,4 +1,4 @@
-// ===== Theme toggle + nav =====
+// ===== Theme toggle + nav + smooth scroll =====
 (function(){
   const root = document.documentElement;
   const toggle = document.getElementById('theme-toggle');
