@@ -11,7 +11,7 @@
   <link rel="shortcut icon" href="/fav-v2.svg" type="image/svg+xml">
   <link rel="mask-icon" href="/fav-v2.svg" color="#66fcf1">
 
-  <!-- Social cards (Open Graph / Twitter) -->
+  <!-- Social cards (optional but nice) -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Data With Drea">
   <meta property="og:description" content="Recruiter → Developer • AI, Automation, and Data Storytelling">
@@ -22,12 +22,12 @@
   <meta name="twitter:description" content="Recruiter → Developer • AI, Automation, and Data Storytelling">
   <meta name="twitter:image" content="https://datawithdrea.github.io/social-card.svg">
 
-  <!-- Structured data (Google) -->
+  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"Person",
-    "name":"Andrea [LastName]",
+    "name":"Andrea",
     "alternateName":"Drea",
     "jobTitle":"Aspiring Software Engineer (AI & Automation)",
     "description":"Recruiter turned developer building systems that make work smarter.",
@@ -65,7 +65,8 @@
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark">🌙</button>
   </header>
 
-  <main id="home" class="hero">
+  <!-- NOTE: added 'reveal' to hero -->
+  <main id="home" class="hero reveal">
     <h1>Hi, I’m Drea 👋🏾</h1>
     <p class="tagline">Recruiter → Developer using automation and analytics to make work smarter, not harder.</p>
     <p class="muted">BSCS (AI &amp; Automation) @ WGU • Graduating June 2026 • Cooper City, FL</p>
@@ -149,52 +150,60 @@
     </ul>
   </section>
 
-  <section id="stats" class="section">
+  <!-- NOTE: added 'reveal' to stats -->
+  <section id="stats" class="section reveal">
     <h2>📊 GitHub Stats</h2>
     <div class="stats-wrap">
-      <img alt="GitHub Stats" loading="lazy"
-           src="https://github-readme-stats.vercel.app/api?username=DataWithDrea&show_icons=true&theme=calm&hide_border=false&include_all_commits=true&count_private=true"
-           onerror="this.replaceWith(Object.assign(document.createElement('p'),{textContent:'(Stats service temporarily unavailable)'}));" />
-      <img alt="Top Languages" loading="lazy"
-           src="https://github-readme-stats.vercel.app/api/top-langs/?username=DataWithDrea&layout=compact&theme=calm&hide_border=false"
-           onerror="this.style.display='none';" />
+      <div class="stats-grid">
+        <img
+          alt="GitHub Stats"
+          loading="lazy"
+          src="https://github-readme-stats.vercel.app/api?username=DataWithDrea&show_icons=true&theme=calm&hide_border=false&include_all_commits=true&count_private=true"
+          onerror="this.replaceWith(Object.assign(document.createElement('p'),{textContent:'(Stats service temporarily unavailable)'}));"
+        />
+        <img
+          alt="Top Languages"
+          loading="lazy"
+          src="https://github-readme-stats.vercel.app/api/top-langs/?username=DataWithDrea&layout=compact&theme=calm&hide_border=false"
+          onerror="this.style.display='none';"
+        />
+      </div>
     </div>
   </section>
 
- <section id="contact" class="section">
-  <h2>🌸 Let’s Connect</h2>
+  <section id="contact" class="section">
+    <h2>🌸 Let’s Connect</h2>
 
-  <ul class="links">
-    <li>📍 Fort Lauderdale Area</li>
-    <li>📧 <a href="mailto:data.andrea@outlook.com?subject=Hello%20from%20your%20portfolio">data.andrea@outlook.com</a></li>
-    <li>💼 <a href="https://linkedin.com/in/andreaconnects" target="_blank" rel="noopener">linkedin.com/in/andreaconnects</a></li>
-    <li>🐙 <a href="https://github.com/DataWithDrea" target="_blank" rel="noopener">github.com/DataWithDrea</a></li>
-  </ul>
+    <ul class="links">
+      <li>📍 Fort Lauderdale Area</li>
+      <li>📧 <a href="mailto:data.andrea@outlook.com?subject=Hello%20from%20your%20portfolio">data.andrea@outlook.com</a></li>
+      <li>💼 <a href="https://linkedin.com/in/andreaconnects" target="_blank" rel="noopener">linkedin.com/in/andreaconnects</a></li>
+      <li>🐙 <a href="https://github.com/DataWithDrea" target="_blank" rel="noopener">github.com/DataWithDrea</a></li>
+    </ul>
 
-  <!-- SINGLE CTA ROW — keep only this one -->
-  <div class="cta-row" style="margin-top:12px">
-    <a class="btn secondary"
-       href="mailto:data.andrea@outlook.com?subject=Hello%20from%20your%20portfolio">
-       Email Me
-    </a>
-
-    <button class="btn secondary" type="button"
-            onclick="navigator.clipboard.writeText('data.andrea@outlook.com')">
-      Copy Email
-    </button>
-
-    <a class="btn" href="/Andrea-Contact.vcf" download>
-      Download Contact Details
-    </a>
-  </div>
-</section>
+    <!-- SINGLE CTA ROW (keep only this one) -->
+    <div class="cta-row" style="margin-top:12px">
+      <a class="btn secondary" href="mailto:data.andrea@outlook.com?subject=Hello%20from%20your%20portfolio" aria-label="Email Drea">
+        Email Me
+      </a>
+      <button class="btn secondary" type="button" aria-label="Copy email to clipboard"
+        onclick="navigator.clipboard.writeText('data.andrea@outlook.com')">
+        Copy Email
+      </button>
+      <a class="btn" href="/Andrea-Contact.vcf" download aria-label="Download contact card (vCard)">
+        Download vCard
+      </a>
+    </div>
+  </section>
 
   <footer class="footer">
-    <small>© <span id="year"></span> Data With Drea • Built for AI, Automation & Good Vibes.</small>
+    <small>© <span id="year"></span> Data With Drea • Updated <span id="updated"></span></small>
   </footer>
 
+  <!-- Cute cursor element -->
   <div id="cursor-dot" aria-hidden="true"></div>
 
+  <!-- Scripts -->
   <script src="./script.js"></script>
   <script src="./projects.js" type="module"></script>
 </body>
