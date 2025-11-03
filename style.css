@@ -1,12 +1,12 @@
 /* ===== THEME TOKENS (Deep Night + Neon) ===== */
 :root{
-  --bg:#0b0f14;           /* deep background */
-  --card:#0e141b;         /* card base */
-  --text:#eaf2ff;         /* bright text */
-  --muted:#9bb0c8;        /* cool-muted */
-  --brand:#8ee4af;        /* sage pop */
-  --accent:#66fcf1;       /* aqua neon */
-  --border:#12202f;       /* darker border */
+  --bg:#0b0f14;
+  --card:#0e141b;
+  --text:#eaf2ff;
+  --muted:#9bb0c8;
+  --brand:#8ee4af;
+  --accent:#66fcf1;
+  --border:#12202f;
   --radius:16px;
   --shadow:0 18px 40px rgba(0,0,0,.45), 0 2px 10px rgba(0,0,0,.35);
 
