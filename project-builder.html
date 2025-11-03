@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Project Builder • Data With Drea</title>
   <meta name="description" content="Generate a JSON object for your projects.json file.">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/fav-v2.svg" type="image/svg+xml" sizes="any">
+  <link rel="shortcut icon" href="/fav-v2.svg" type="image/svg+xml">
+  <link rel="mask-icon" href="/fav-v2.svg" color="#66fcf1">
   <link rel="stylesheet" href="./style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
   <style>
@@ -103,7 +105,7 @@
       <article class="card">
         <h3>Tips</h3>
         <ul class="bullets">
-          <li><strong>Image</strong>: upload PNG/JPG to <code>img/</code> and set that path (e.g., <code>img/matchmaker-hero.png</code>).</li>
+          <li><strong>Image</strong>: upload PNG/JPG/SVG to <code>img/</code> and set that path.</li>
           <li><strong>Live URL</strong>: paste your Hugging Face Space link to show a “Live” button (auto-embeds on project page).</li>
           <li><strong>Order</strong>: projects appear in the same order they are listed in <code>projects.json</code>.</li>
           <li><strong>Valid JSON</strong>: commas and quotes matter; one typo can hide the grid.</li>
@@ -116,15 +118,12 @@
     <small>© <span id="year"></span> Data With Drea</small>
   </footer>
 
-  <!-- Cute cursor element -->
   <div id="cursor-dot" aria-hidden="true"></div>
 
   <script>
-    // Footer year
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Mobile nav
     (function(){
       const nav = document.getElementById('nav');
       const btn = document.querySelector('.nav-toggle');
@@ -136,7 +135,6 @@
       }
     })();
 
-    // Builder logic
     document.getElementById('f').addEventListener('submit', (e)=>{
       e.preventDefault();
       const fd = new FormData(e.target);
@@ -158,7 +156,6 @@
       window.scrollTo({top: document.getElementById('out').offsetTop - 20, behavior:'smooth'});
     });
 
-    // Fancy cursor
     (function(){
       if (!window.matchMedia || !window.matchMedia('(pointer: fine)').matches) return;
       const dot = document.getElementById('cursor-dot'); if (!dot) return;
