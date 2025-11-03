@@ -1,4 +1,4 @@
-// ===== Theme toggle + nav + smooth scroll =====
+// ===== Theme toggle + nav + smooth scroll + active nav + reveal + magnet =====
 (function(){
   const root = document.documentElement;
   const toggle = document.getElementById('theme-toggle');
@@ -7,15 +7,16 @@
   const year = document.getElementById('year');
   const upd = document.getElementById('updated');
 
+  // Footer dates
   if (year) year.textContent = new Date().getFullYear();
   if (upd){
     const d = new Date(document.lastModified);
     upd.textContent = d.toLocaleDateString(undefined, {year:'numeric', month:'short'});
   }
 
+  // Theme (dark/light)
   const getSystemTheme = () =>
     window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-
   const stored = localStorage.getItem('theme');
   const initial = stored || getSystemTheme();
   root.setAttribute('data-theme', initial);
@@ -26,7 +27,6 @@
     localStorage.setItem('theme', t);
     if (toggle) toggle.textContent = t === 'dark' ? '🌙' : '☀️';
   }
-
   if (toggle){
     toggle.addEventListener('click', () => {
       const current = root.getAttribute('data-theme') || getSystemTheme();
@@ -34,6 +34,7 @@
     });
   }
 
+  // Mobile nav
   if (btn && nav){
     btn.addEventListener('click', () => {
       const open = nav.classList.toggle('open');
@@ -71,7 +72,41 @@
     },{ rootMargin:'-45% 0px -45% 0px', threshold:0 });
     sections.forEach(s=>io.observe(s));
   }
-})();  // <— keep this!
+
+  // ===== Reveal on scroll (sections, cards, stats) =====
+  const revealEls = [
+    ...document.querySelectorAll('.section'),
+    ...document.querySelectorAll('.card'),
+    ...document.querySelectorAll('.stats-wrap')
+  ];
+  revealEls.forEach(el => el.classList.add('reveal'));
+
+  if ('IntersectionObserver' in window){
+    const ioReveal = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          e.target.classList.add('in');
+          ioReveal.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.01 });
+    revealEls.forEach(el => ioReveal.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+  // ===== Button "magnet" micro-interaction =====
+  const magBtns = document.querySelectorAll('.btn');
+  magBtns.forEach(b => {
+    b.addEventListener('mousemove', (e) => {
+      const r = b.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width/2;
+      const y = e.clientY - r.top  - r.height/2;
+      b.style.transform = `translate(${x*0.05}px, ${y*0.05}px)`;
+    });
+    b.addEventListener('mouseleave', () => { b.style.transform = ''; });
+  });
+})();  // keep this IIFE wrapper
 
 // ===== Fancy cursor (desktop only) =====
 (function(){
