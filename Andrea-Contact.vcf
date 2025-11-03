@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Drea;Andrea;;;
+FN:Andrea Straus
+EMAIL;TYPE=INTERNET;TYPE=WORK:andrea.Straus@outlook.com
+TEL;TYPE=CELL:(954) 225-6101
+ADR;TYPE=HOME:;;Cooper City, FL;;;
+URL:https://datawithdrea.github.io/
+URL;TYPE=GITHUB:https://github.com/DataWithDrea
+URL;TYPE=LINKEDIN:https://www.linkedin.com/in/andreaconnects
+END:VCARD
