@@ -1,33 +1,42 @@
-// Load projects from projects.json and render cards
-export default null;
+// projects.js — renders Featured Projects from projects.json into #project-grid
 
 async function loadProjects(){
   const grid = document.getElementById('project-grid');
   if (!grid) return;
+
   try{
     const res = await fetch('./projects.json', {cache:'no-store'});
+    if (!res.ok) throw new Error('projects.json not found');
     const data = await res.json();
-    const list = data.projects || [];
-    grid.innerHTML = list.length ? '' : '<p class="muted">No projects yet. Add some in <code>projects.json</code>.</p>';
-    for (const p of list){
-      const card = document.createElement('article');
-      card.className = 'card';
-      card.innerHTML = `
-        <img class="thumb" src="${p.image||'img/placeholder.svg'}" alt="${p.title} preview" />
-        <h3>${p.title}</h3>
-        <p>${p.summary||''}</p>
-        ${p.impact ? `<p class="muted small">Impact: <strong>${p.impact}</strong></p>` : ''}
-        ${Array.isArray(p.tags) ? `<ul class="tags">` + p.tags.map(t=>`<li>${t}</li>`).join('') + `</ul>` : ''}
-        <div class="buttons">
-          ${p.repo_url ? `<a class="btn secondary" href="${p.repo_url}" target="_blank" rel="noopener">GitHub</a>` : ''}
-          ${p.live_url ? `<a class="btn" href="${p.live_url}" target="_blank" rel="noopener">Live</a>` : ''}
-          <a class="btn" href="project.html?id=${encodeURIComponent(p.id)}">Details</a>
-        </div>`;
-      grid.appendChild(card);
+    const items = (data.projects || []);
+
+    if (!items.length){
+      grid.innerHTML = `<p class="muted">Projects coming soon — use the <a href="./project-builder.html">Project Builder</a> to add some.</p>`;
+      return;
     }
-  }catch(e){
-    grid.innerHTML = '<p class="muted">Could not load projects.json</p>';
-    console.error(e);
+
+    grid.innerHTML = items.map(p => {
+      const tags = Array.isArray(p.tags) ? p.tags.map(t=>`<li>${t}</li>`).join('') : '';
+      const img  = p.image ? `<img class="thumb" src="${p.image}" alt="${p.title} preview">` : '';
+      const live = p.live_url ? `<a class="btn" href="${p.live_url}" target="_blank" rel="noopener">Live</a>` : '';
+      const repo = p.repo_url ? `<a class="btn secondary" href="${p.repo_url}" target="_blank" rel="noopener">GitHub</a>` : '';
+      return `
+        <article class="card">
+          ${img}
+          <h3>${p.title}</h3>
+          <p class="small muted">${p.summary || ''}</p>
+          ${tags ? `<ul class="tags">${tags}</ul>` : ''}
+          <div class="buttons">
+            <a class="btn" href="./project.html?id=${encodeURIComponent(p.id)}">Case Study</a>
+            ${live}${repo}
+          </div>
+        </article>
+      `;
+    }).join('');
+  }catch(err){
+    console.error(err);
+    grid.innerHTML = `<p class="muted">Couldn’t load projects. Make sure <code>projects.json</code> is in the repo root.</p>`;
   }
 }
-loadProjects();
+
+document.addEventListener('DOMContentLoaded', loadProjects);
