@@ -286,3 +286,45 @@ body::after{
   }
   .card, .table-wrap{ break-inside:avoid }
 }
+/* ===== TERRACOTTA PASS — warm primary accent overrides ===== */
+/* Paste at the VERY BOTTOM of style.css */
+
+:root{
+  --accent:#C97B63;   /* terracotta = primary */
+  --brand:#A3B18A;    /* sage = secondary */
+  --accent-2:#DCCFF7; /* lilac = subtle pop */
+
+  /* slightly warmer page glow */
+  --glow-1: 0 0 20px rgba(201,123,99,.22);
+  --glow-2: 0 0 26px rgba(163,177,138,.20);
+}
+
+/* Light theme equivalents */
+:root[data-theme="light"]{
+  --accent:#B26A53;   /* deeper terracotta for contrast */
+  --brand:#7e8f6b;    /* muted sage */
+  --accent-2:#CBBBEF; /* softer lilac in light */
+}
+
+/* Warmer hero haze */
+.hero{
+  background:
+    radial-gradient(1200px 500px at 50% -10%, rgba(201,123,99,.16), transparent 60%),
+    radial-gradient(900px 420px at 90% 0%, rgba(163,177,138,.12), transparent 55%),
+    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.05));
+}
+
+/* Terracotta hover glow for links */
+a:hover{ text-shadow:0 0 8px rgba(201,123,99,.25) }
+
+/* Optional: slightly stronger section divider warmth */
+.section::after{
+  background:linear-gradient(90deg, transparent, var(--accent) 20%, var(--brand) 55%, var(--accent-2) 85%, transparent);
+  opacity:.40;
+}
+
+/* Cursor follows new primary */
+#cursor-dot{
+  background:var(--accent);
+  box-shadow:0 0 18px color-mix(in oklab, var(--accent) 65%, transparent);
+}
