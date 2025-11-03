@@ -1,100 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data With Drea</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="dark-theme">
+<body>
   <header class="hero">
-    <h1>🌿 Data With Drea</h1>
-    <p>Hi, I’m <strong>Drea</strong> — a recruiter-turned-developer leveling up into a Software Engineer with a focus on AI & Automation 👩🏾‍💻✨<br>
-    I build smart systems that connect people, processes, and possibilities.</p>
+    <h1>Data With Drea</h1>
+    <p class="tagline">Building systems that automate, illuminate, and elevate ✨</p>
     <div class="cta-buttons">
-      <a href="#projects">🚀 View Projects</a>
+      <a href="#projects">🌈 Explore Projects</a>
       <a href="https://github.com/DataWithDrea" target="_blank">🐙 GitHub</a>
       <a href="/resume.pdf" target="_blank">📄 Résumé</a>
     </div>
   </header>
 
-  <section id="about">
+  <section class="about">
     <h2>💫 About Me</h2>
-    <p>I’m Drea — based in sunny South Florida ☀️ — with 8+ years in talent acquisition, data storytelling, and process optimization.<br>
-    Now, I’m building the future of work with code, automation, and a whole lot of 💅🏾 energy.</p>
-    <p>I’m earning my B.S. in Computer Science (AI + automation, WGU – 2026 🎓).<br>
-    My mission? Build systems that help teams work smarter, not harder.</p>
-    <blockquote>⚡ I’m not just learning tech — I’m reshaping how we work with it.</blockquote>
+    <p>Hi, I’m <strong>Drea</strong> — a recruiter-turned-software engineer, blending AI, automation, and a whole lot of 💅🏾 energy.</p>
+    <p>Currently finishing my B.S. in Computer Science (AI + Automation focus) @ WGU (grad: June 2026), I’m here to build tech that empowers people and optimizes work.</p>
+    <blockquote>“Automation isn’t about doing less — it’s about focusing on what matters most.”</blockquote>
   </section>
 
-  <section id="currently">
-    <h2>🌱 Currently</h2>
+  <section class="currently">
+    <h2>🌱 What I'm Up To</h2>
     <ul>
-      <li>🔧 Building: <strong>MatchMaker.AI</strong> – resume & job matching powered by NLP</li>
-      <li>📚 Learning: Python, APIs, async workflows</li>
-      <li>🧠 Exploring: LLMs + automation tools</li>
-      <li>💬 Ask Me About: career transitions, automation, data-driven workflows</li>
+      <li>🔍 Building: MatchMaker.AI – smart resume/job match system</li>
+      <li>🧪 Experimenting with: Hugging Face, LLMs, and async workflows</li>
+      <li>📚 Learning: Python (intermediate), APIs, full-stack tools</li>
     </ul>
   </section>
 
-  <section id="tracks">
-    <h2>🧭 Learning Tracks</h2>
-    <table>
-      <thead>
-        <tr><th>Track</th><th>Focus</th><th>Tools</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>AI & Automation</td><td>LLMs, workflow design</td><td>Python, OpenAI, Zapier</td></tr>
-        <tr><td>Full-Stack Dev</td><td>Internal tools & apps</td><td>React, Flask, Node</td></tr>
-        <tr><td>Data Analytics</td><td>Data storytelling</td><td>SQL, Power BI</td></tr>
-        <tr><td>CS Fundamentals</td><td>Problem solving</td><td>LeetCode, HackerRank</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="projects">
-    <h2>🏗️ Featured Projects</h2>
-    <div class="project">
-      <h3>💡 MatchMaker.AI</h3>
-      <p>Resume-to-job matcher that scores fit and recommends improvements.</p>
-      <p>🛠️ Python · Streamlit · NLP · Hugging Face</p>
-    </div>
-    <div class="project">
-      <h3>📊 Automation ROI Tracker</h3>
-      <p>Dashboard that shows time/cost saved by automations.</p>
-      <p>🛠️ SQL · Power BI · Google Sheets API</p>
-    </div>
-    <div class="project">
-      <h3>📈 Recruiting Workflow Dashboard</h3>
-      <p>Live hiring metrics with auto-updates. No spreadsheets needed.</p>
-      <p>🛠️ Power BI · Google Sheets API</p>
-    </div>
-    <div class="project">
-      <h3>🌐 Portfolio Website</h3>
-      <p>This site — showcasing my projects and journey.</p>
-      <p>🛠️ HTML · GitHub Pages · Sass</p>
+  <section class="projects" id="projects">
+    <h2>✨ Featured Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>💼 MatchMaker.AI</h3>
+        <p>NLP-powered app that ranks resumes by job fit using semantic similarity + keyword weighting.</p>
+        <span class="stack">Python · scikit-learn · Hugging Face</span>
+      </div>
+      <div class="project-card">
+        <h3>📊 Automation ROI Tracker</h3>
+        <p>Analytics dashboard that calculates time saved & ROI of automated workflows.</p>
+        <span class="stack">SQL · Power BI · Google Sheets API</span>
+      </div>
+      <div class="project-card">
+        <h3>📈 Recruiting Workflow Dashboard</h3>
+        <p>Interactive dashboard tracking sourcing, time-to-fill, and compliance data.</p>
+        <span class="stack">Power BI · Excel · Automation</span>
+      </div>
+      <div class="project-card">
+        <h3>🌐 DataWithDrea.dev</h3>
+        <p>This very site — designed to reflect my dev energy and showcase my journey.</p>
+        <span class="stack">HTML · CSS · GitHub Pages</span>
+      </div>
     </div>
   </section>
 
-  <section id="stack">
-    <h2>🧰 Tech Stack & Tools</h2>
-    <p>[Tech badges go here – styled with rainbow hover]</p>
-  </section>
-
-  <section id="timeline">
-    <h2>🗓️ Leveling Up Timeline</h2>
-    <ul>
-      <li>📘 2023 — Started CS @ WGU</li>
-      <li>🔧 2024 — Built dashboards & automation tools</li>
-      <li>🚀 2025 — AI apps, full-stack dev, public portfolio</li>
-      <li>🎯 2026 — Land Software Engineer role</li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2>💌 Let’s Collaborate</h2>
-    <p>If you're into automation, AI, or building smart systems — let's build something amazing together.</p>
+  <section class="contact">
+    <h2>💌 Let’s Connect</h2>
+    <p>If you vibe with AI, automation, or intentional design — let’s build something together.</p>
     <ul>
       <li>📍 Fort Lauderdale, FL</li>
       <li>📧 data.andrea@outlook.com</li>
@@ -104,10 +72,7 @@
   </section>
 
   <footer>
-    <blockquote>
-      🌿 “Automation isn’t about doing less — it’s about focusing on what matters most.” <br>
-      <strong>— Drea, aka Data With Drea</strong>
-    </blockquote>
+    <p>Built with 💖 & 💻 by Drea · © 2025</p>
   </footer>
 </body>
 </html>
